@@ -1,0 +1,33 @@
+<nav class="navbar navbar-light bg-light custom-nav">
+  <div class="container-fluid">
+  <span *ngIf = "type != 'vehicles'" class="navbar-brand mb-0 h1">List of Vehicles Voilated Traffic Rules And Pending Fine!.</span>
+  <span *ngIf = "type == 'vehicles'" class="navbar-brand mb-0 h1">List of All Vehicles.</span>
+  </div>
+</nav>
+<nav class="navbar navbar-light bg-light cust-search-nav">
+  <div class="container-fluid">
+    <form class="d-flex">
+      <input [(ngModel)] = "vehicleNo" name="search" class="form-control me-2" type="search" placeholder="Search By Vehicle No." aria-label="Search">
+      <button class="btn btn-outline-success" (click) = "onSearch()">Search</button>
+    </form>
+  </div>
+</nav>
+<table *ngIf="vehicleList.length" class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th *ngFor="let head of headers" scope="col">{{head.name}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let vehicle of vehicleList; index as i">
+      <th scope="row">{{i+1}}</th>
+      <td *ngFor="let head of headers" scope="col" (click) = "tdClick($event, vehicle, i)" [innerHTML] = "vehicle[head.key] | customUppercase:head.pipes"></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div *ngIf="!vehicleList.length" class="cust-info alert alert-danger" role="alert">
+  No Data Available!
+</div>

@@ -1,0 +1,23 @@
+.custom-product {
+    margin: 10px;
+    width: 20%;
+    float: left;
+}
+
+.custom-nav {
+    clear: both;
+    margin-top: 20px;
+}
+
+.custom-badge {
+    margin-left: 20px;
+}
+
+.custom-form {
+    right: 5%;
+    position: absolute;
+    width: 70%;
+    .form-control {
+        margin-right: 20px;
+    }
+}

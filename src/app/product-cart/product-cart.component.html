@@ -1,0 +1,49 @@
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a [routerLink]="['home']" class="navbar-brand">Home</a>
+      <form class="d-flex custom-form">
+        <input [(ngModel)] = "serachedKey" list="datalistOptions" name = "search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" (click) = "onSearch()" type="button">Search</button>
+      </form>
+      <datalist id="datalistOptions">
+          <ng-container *ngFor="let product of products">
+            <option value="{{product.name}}">
+          </ng-container>
+      </datalist>
+    </div>
+  </nav>
+  <div *ngIf = "isRecentlyView" class="recently-view-product">  
+    <nav class="navbar navbar-light bg-light custom-nav">
+        <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Recently Viewed Product List<span class="custom-badge badge bg-primary" (click) = "clearRecentList()">Clear List</span></span>
+        </div>
+    </nav>
+    <div  class="d-grid gap-3 recently-viewed-products">
+        <ng-container *ngFor="let product of products">
+            <div *ngIf="product.viewed" class="p-2 bg-light border custom-product">{{product.name}}</div>
+        </ng-container>    
+    </div>
+  </div>
+  <div *ngIf = "isSearch" class="search-product"> 
+    <nav class="navbar navbar-light bg-light custom-nav">
+        <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Search Results</span>
+        </div>
+    </nav>
+    
+    <div  class="d-grid gap-3">
+        <div *ngFor="let product of searchResults" class="p-2 bg-light border custom-product">{{product.name}}</div>
+    </div>
+ </div>
+
+ <div *ngIf = "!isSearch" class="all-product"> 
+    <nav class="navbar navbar-light bg-light custom-nav">
+        <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">All Products</span>
+        </div>
+    </nav>
+    
+    <div  class="d-grid gap-3">
+        <div *ngFor="let product of products" class="p-2 bg-light border custom-product">{{product.name}}</div>
+    </div>
+ </div>

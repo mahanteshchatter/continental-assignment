@@ -1,0 +1,8 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="cust-container-fluid container-fluid">
+      <a [routerLink] = "['/home']" class="navbar-brand" >Home</a>      
+      <a routerLinkActive = "bg-primary" [routerLink] = "['/traffic-violation/dashboard']"  class="cust-navbar-brand navbar-brand">DashBoard</a>
+      <a routerLinkActive = "bg-primary" [routerLink] = "['/traffic-violation/vehicles']" class="navbar-brand cust-navbar-brand">Vehicle List</a>  
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
